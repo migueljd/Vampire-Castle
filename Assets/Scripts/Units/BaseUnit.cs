@@ -1,0 +1,71 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class BaseUnit : MonoBehaviour {
+	
+
+	private NavMeshAgent agent;
+	private float nextAttackTime;
+
+	public bool enemy;
+	public float attackSpeed;
+
+	public int Health;
+	public int Damage;
+
+
+	protected BaseUnit target;
+
+
+
+	// Use this for initialization
+	protected virtual void Start () {
+		agent = transform.GetComponent<NavMeshAgent> ();
+	}
+	
+	// Update is called once per frame
+	protected virtual void Update () {
+		if (Health <= 0) {
+			Destroy(this.gameObject);
+			return;
+		}
+		if (target != null && nextAttackTime <= Time.time) {
+			nextAttackTime += attackSpeed;
+			Attack ();
+
+		}
+
+	}
+
+
+	public void MoveTo(Vector3 position){
+		agent.SetDestination (position);
+		agent.Resume ();
+	}
+
+	protected virtual void OnTriggerEnter(Collider other){
+		BaseUnit unit = other.GetComponent<BaseUnit> ();
+		if (unit != null && unit.enemy != this.enemy && target == null) {
+			EnterCombat(unit);
+			agent.Stop();
+		}
+	}
+
+	private void EnterCombat(BaseUnit unit){
+		target = unit;
+	}
+
+	private void Attack(){
+		if (target.TakeDamage (this.Damage)) {
+			target = null;
+		}
+
+	}
+
+	public bool TakeDamage(int damage){
+		Health -= damage;
+		if (Health <= 0)
+			return true;
+		return false;
+	}
+}
