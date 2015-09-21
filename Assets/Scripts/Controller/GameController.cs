@@ -22,11 +22,12 @@ public class GameController : MonoBehaviour {
 			if(Physics.Raycast(ray,  out hit, 20, ~ (1 << LayerMask.NameToLayer("Default")))){
 
 				BaseUnit unit = hit.collider.transform.GetComponent<BaseUnit>();
-
-				if(unit.enemy)
-					selectedEnemy = unit;
-				else
-					selectedUnit = unit;
+				if(unit != null){
+					if(unit.enemy)
+						selectedEnemy = unit;
+					else
+						selectedUnit = unit;
+				}
 					
 			}
 		} else if (Input.GetMouseButtonDown (1)) {
@@ -37,9 +38,8 @@ public class GameController : MonoBehaviour {
 
 				Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
 
-				Debug.Log (LayerMask.NameToLayer("Controller"));
 
-				if(Physics.Raycast(ray,  out hit, 20, ~ (1<< LayerMask.NameToLayer("Controller")))){
+				if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
 					if(selectedUnit != null){
 
 						float z = 0;
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour {
 							Transform child = hit.collider.transform.GetChild(a);
 							if(child.name == "DepthMarkup") z = child.position.z;
 						}
-
+						Debug.Log(hit.collider.transform);
 						Vector3 destination = new Vector3(hit.point.x,hit.point.y ,z);
 						selectedUnit.MoveTo(destination);
 					}
