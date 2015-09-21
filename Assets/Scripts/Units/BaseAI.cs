@@ -31,7 +31,5 @@ public class BaseAI : BaseUnit {
 
 	protected override void OnTriggerEnter(Collider c){
 		base.OnTriggerEnter (c);
-
-
 	}
 }
