@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour {
 	public BaseUnit selectedUnit;
 	public BaseUnit selectedEnemy;
 
+	public BaseUnit toSpawn;
+
 	// Use this for initialization
 	void Start () {
 //		Debug.Log(~(1<< LayerMask.NameToLayer("Controller")));
@@ -42,18 +44,38 @@ public class GameController : MonoBehaviour {
 				if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
 					if(selectedUnit != null){
 
-						float z = 0;
-						for(int a =0; a < hit.collider.transform.childCount; a++){
-							Transform child = hit.collider.transform.GetChild(a);
-							if(child.name == "DepthMarkup") z = child.position.z;
-						}
-						Debug.Log(hit.collider.transform);
-						Vector3 destination = new Vector3(hit.point.x,hit.point.y ,z);
+						Vector3 destination = GetCorrectedDepthPoint(hit);
 						selectedUnit.MoveTo(destination);
 					}
 				}
 			}
 		}
+
+		if (Input.GetKeyDown (KeyCode.I)) {
+			RaycastHit hit;
+			
+			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
+			
+			
+			if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
+				if(toSpawn != null){
+					
+					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
+					Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+				}
+			}
+		}
+	}
+
+	private Vector3 GetCorrectedDepthPoint(RaycastHit hit){
+		float z = 0;
+	
+		for(int a =0; a < hit.collider.transform.childCount; a++){
+			Transform child = hit.collider.transform.GetChild(a);
+			if(child.name == "DepthMarkup") z = child.position.z;
+		}
+
+		return new Vector3(hit.point.x,hit.point.y ,z);
 	}
 	
 }
