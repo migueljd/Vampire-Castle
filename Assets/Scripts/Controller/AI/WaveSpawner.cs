@@ -8,6 +8,8 @@ public class WaveSpawner : MonoBehaviour {
 
 	public Waypoint firstWaypoint;
 
+	public static int enemySpawned;
+
 	// Use this for initialization
 	void Start () {
 		//For test purposes, create a list
@@ -40,7 +42,12 @@ public class WaveSpawner : MonoBehaviour {
 		Debug.Log ("Spawning enemy");
 		GameObject spawnedEnemy = (GameObject) Instantiate (enemy, this.transform.position, Quaternion.identity);
 		spawnedEnemy.GetComponent<BaseAI> ().nextWaypoint = firstWaypoint;
+		enemySpawned++;
 
+	}
+
+	public int GetEnemyToSpawn(){
+		return mainWave.GetEnemyCount ();
 	}
 }
 
@@ -59,7 +66,7 @@ public class Wave{
 
 	public GameObject TryGetNextEnemy(){
 		if (Time.time >= nextSpawnTime && enemies.Count > 0) {
-			nextSpawnTime += Time.time + timer;
+			nextSpawnTime = Time.time + timer;
 			GameObject next = enemies[0];
 			enemies.RemoveAt(0);
 

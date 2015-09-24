@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -9,6 +10,10 @@ public class GameController : MonoBehaviour {
 	public BaseUnit toSpawn;
 
 	public WaveSpawner waveSpawner;
+	public static bool draculaAlive = true;
+
+	public Text endGameText;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +23,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		CheckEndGame ();
+
+
 		if (Input.GetMouseButtonDown (0)) {
 			RaycastHit hit;
 			
@@ -66,6 +75,17 @@ public class GameController : MonoBehaviour {
 					Instantiate(toSpawn, spawnPoint, Quaternion.identity);
 				}
 			}
+		}
+	}
+
+	private void CheckEndGame(){
+		Debug.Log (string.Format("There are {0} spawned and {1} to be spawned", WaveSpawner.enemySpawned, waveSpawner.GetEnemyToSpawn()));
+		if (WaveSpawner.enemySpawned == 0 && waveSpawner.GetEnemyToSpawn () == 0) {
+			endGameText.text = "Dracula is the ultimate overlord!";
+			endGameText.enabled = true;
+		} else if (!draculaAlive) {
+			endGameText.text = "Punny Dracula >.>";
+			endGameText.enabled = true;
 		}
 	}
 

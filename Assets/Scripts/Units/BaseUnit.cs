@@ -18,6 +18,7 @@ public class BaseUnit : MonoBehaviour {
 
 
 
+
 	// Use this for initialization
 	protected virtual void Start () {
 		agent = transform.GetComponent<NavMeshAgent> ();
@@ -27,6 +28,10 @@ public class BaseUnit : MonoBehaviour {
 	protected virtual void Update () {
 		if (Health <= 0) {
 			Destroy(this.gameObject);
+			if(this is BaseAI)
+				WaveSpawner.enemySpawned--;
+			else if(this.name == "Dracula")
+				GameController.draculaAlive = false;
 			return;
 		}
 		if (target != null && nextAttackTime <= Time.time) {
@@ -44,10 +49,12 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 	protected virtual void OnTriggerEnter(Collider other){
-		BaseUnit unit = other.GetComponent<BaseUnit> ();
-		if (unit != null && unit.enemy != this.enemy && target == null) {
-			EnterCombat(unit);
-			agent.Stop();
+		if (target == null) {
+			BaseUnit unit = other.GetComponent<BaseUnit> ();
+			if (unit != null && unit.enemy != this.enemy && target == null) {
+				EnterCombat (unit);
+				agent.Stop ();
+			}
 		}
 	}
 
