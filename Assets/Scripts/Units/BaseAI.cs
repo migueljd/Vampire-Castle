@@ -16,10 +16,10 @@ public class BaseAI : BaseUnit {
 	// Update is called once per frame
 	protected override void Update () {
 		base.Update ();
-		if(target == null && nextWaypoint != null)
+		if (target == null && nextWaypoint != null) {
 			MoveTo (nextWaypoint.transform.position);
+		}
 
-		Debug.Log (Vector3.Distance (nextWaypoint.transform.position, transform.position));
 		if (Vector3.Distance (nextWaypoint.transform.position, transform.position) <= distanceThreshold) {
 			Debug.Log ("Changing waypoint");
 			nextWaypoint = nextWaypoint.next;

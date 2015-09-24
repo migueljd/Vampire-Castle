@@ -30,7 +30,7 @@ public class BaseUnit : MonoBehaviour {
 			return;
 		}
 		if (target != null && nextAttackTime <= Time.time) {
-			nextAttackTime += attackSpeed;
+			nextAttackTime = Time.time + attackSpeed;
 			Attack ();
 
 		}
@@ -63,7 +63,10 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 	public bool TakeDamage(int damage){
+
+		Debug.Log ("Unit " + this.name + " took " + damage + " damage");
 		Health -= damage;
+		Debug.Log (string.Format ("Unit {0} remaining health is {1}", this.name, this.Health));
 		if (Health <= 0)
 			return true;
 		return false;

@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 
 	public BaseUnit toSpawn;
 
+	public WaveSpawner waveSpawner;
+
 	// Use this for initialization
 	void Start () {
 //		Debug.Log(~(1<< LayerMask.NameToLayer("Controller")));
@@ -77,5 +79,7 @@ public class GameController : MonoBehaviour {
 
 		return new Vector3(hit.point.x,hit.point.y ,z);
 	}
+
+
 	
 }
