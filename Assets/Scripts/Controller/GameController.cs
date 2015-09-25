@@ -12,13 +12,17 @@ public class GameController : MonoBehaviour {
 	public WaveSpawner waveSpawner;
 	public static bool draculaAlive = true;
 
-	public Text endGameText;
 
+	public int availableUnitPool;
+
+	public Text endGameText;
+	public Text availableUnitPoolText;
 
 	// Use this for initialization
 	void Start () {
 //		Debug.Log(~(1<< LayerMask.NameToLayer("Controller")));
 //		Debug.Log (~(1 <<LayerMask.NameToLayer ("Default")));
+		availableUnitPoolText.text = "Available units: " + availableUnitPool;
 	}
 	
 	// Update is called once per frame
@@ -69,10 +73,12 @@ public class GameController : MonoBehaviour {
 			
 			
 			if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
-				if(toSpawn != null){
+				if(toSpawn != null && availableUnitPool > 0){
 					
 					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
 					Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+					availableUnitPool--;
+					availableUnitPoolText.text = "Available units: " + availableUnitPool;
 				}
 			}
 		}
