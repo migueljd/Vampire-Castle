@@ -33,7 +33,11 @@ public class BaseAI : BaseUnit {
 
 	}
 
-	protected override void OnTriggerEnter(Collider c){
-		base.OnTriggerEnter (c);
+//	protected override void OnTriggerEnter(Collider c){
+//		base.OnTriggerEnter (c);
+//	}
+
+	protected override void OnTriggerStay(Collider c){
+		base.OnTriggerStay (c);
 	}
 }

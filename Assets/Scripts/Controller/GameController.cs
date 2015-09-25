@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	private void CheckEndGame(){
-		Debug.Log (string.Format("There are {0} spawned and {1} to be spawned", WaveSpawner.enemySpawned, waveSpawner.GetEnemyToSpawn()));
+//		Debug.Log (string.Format("There are {0} spawned and {1} to be spawned", WaveSpawner.enemySpawned, waveSpawner.GetEnemyToSpawn()));
 		if (WaveSpawner.enemySpawned == 0 && waveSpawner.GetEnemyToSpawn () == 0) {
 			endGameText.text = "Dracula is the ultimate overlord!";
 			endGameText.enabled = true;
