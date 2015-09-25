@@ -6,6 +6,9 @@ public class WaveSpawner : MonoBehaviour {
 
 	private Wave mainWave;
 
+	public int enemiesInWave;
+	public float spawnTimer;
+
 	public Waypoint firstWaypoint;
 
 	public static int enemySpawned;
@@ -16,13 +19,12 @@ public class WaveSpawner : MonoBehaviour {
 		GameObject enemyPrefab = (GameObject) Resources.Load ("Prefabs/Enemy");
 		Debug.Log (enemyPrefab);
 		List<GameObject> enemies = new List<GameObject> ();
-		enemies.Add (enemyPrefab);
-		enemies.Add (enemyPrefab);
-		enemies.Add (enemyPrefab);
-		enemies.Add (enemyPrefab);
-		enemies.Add (enemyPrefab);
 
-		mainWave = new Wave (enemies, 1);
+		for (int a = 0; a < enemiesInWave; a++) { 
+			enemies.Add (enemyPrefab);
+		}
+
+		mainWave = new Wave (enemies, spawnTimer);
 	}
 	
 	// Update is called once per frame
