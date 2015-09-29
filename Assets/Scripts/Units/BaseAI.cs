@@ -25,7 +25,6 @@ public class BaseAI : BaseUnit {
 		}
 
 		if (Vector3.Distance (nextWaypoint.transform.position, transform.position) <= distanceThreshold && target == null) {
-			Debug.Log ("Changing waypoint");
 			nextWaypoint = nextWaypoint.next;
 			if (nextWaypoint != null)
 				MoveTo (nextWaypoint.transform.position);

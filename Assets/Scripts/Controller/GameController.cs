@@ -78,12 +78,18 @@ public class GameController : MonoBehaviour {
 			if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
 				Room roomHit = hit.collider.transform.GetComponent<Room>();
 
-				if(toSpawn != null && availableUnitPool > 0 && roomHit != null && roomHit.TryAddUnit(toSpawn)){
+				if(toSpawn != null && availableUnitPool > 0 && roomHit != null){
 					
 					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
-					Instantiate(toSpawn, spawnPoint, Quaternion.identity);
-					availableUnitPool--;
-					availableUnitPoolText.text = "Available units: " + availableUnitPool;
+
+					BaseUnit go = (BaseUnit) Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+					if( roomHit.TryAddUnit(go)){
+						availableUnitPool--;
+						availableUnitPoolText.text = "Available units: " + availableUnitPool;
+					}
+					else{
+						Destroy(go.gameObject);
+					}
 				}
 			}
 		}

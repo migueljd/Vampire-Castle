@@ -16,7 +16,7 @@ public class BaseUnit : MonoBehaviour {
 
 	protected BaseUnit target;
 
-
+	public Room unitRoom;
 
 
 	// Use this for initialization
@@ -31,6 +31,10 @@ public class BaseUnit : MonoBehaviour {
 				WaveSpawner.enemySpawned--;
 			else if(this.name == "Dracula")
 				GameController.draculaAlive = false;
+			else if(this is BaseUnit){
+				Debug.Log ("Removing");
+				unitRoom.RemoveUnit(this);
+			}
 			Destroy(this.gameObject);
 			return;
 		}
@@ -51,7 +55,8 @@ public class BaseUnit : MonoBehaviour {
 	protected virtual void OnTriggerEnter(Collider other){
 		if (target == null) {
 			BaseUnit unit = other.GetComponent<BaseUnit> ();
-			if (unit != null && unit.enemy != this.enemy && target == null) {
+			if (unit != null && unit.enemy != this.enemy && (unit.target == null || unit.target == this)) {
+
 				EnterCombat (unit);
 				agent.Stop ();
 			}
@@ -61,7 +66,9 @@ public class BaseUnit : MonoBehaviour {
 	protected virtual void OnTriggerStay(Collider other){
 		if (target == null) {
 			BaseUnit unit = other.GetComponent<BaseUnit> ();
-			if (unit != null && unit.enemy != this.enemy && target == null) {
+
+			if (unit != null && unit.enemy != this.enemy && unit.target == null) {
+				if(unit.enemy == false) Debug.Log(unit.target);
 				EnterCombat (unit);
 				agent.Stop ();
 			}
@@ -71,6 +78,7 @@ public class BaseUnit : MonoBehaviour {
 
 	private void EnterCombat(BaseUnit unit){
 		target = unit;
+
 	}
 
 	private void Attack(){
@@ -82,9 +90,9 @@ public class BaseUnit : MonoBehaviour {
 
 	public bool TakeDamage(int damage){
 
-		Debug.Log ("Unit " + this.name + " took " + damage + " damage");
+//		Debug.Log ("Unit " + this.name + " took " + damage + " damage");
 		Health -= damage;
-		Debug.Log (string.Format ("Unit {0} remaining health is {1}", this.name, this.Health));
+//		Debug.Log (string.Format ("Unit {0} remaining health is {1}", this.name, this.Health));
 		if (Health <= 0)
 			return true;
 		return false;

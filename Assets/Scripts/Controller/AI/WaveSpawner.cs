@@ -46,9 +46,7 @@ public class WaveSpawner : MonoBehaviour {
 		if (firstSpawn <= Time.time ) {
 
 			if (mainWave != null && mainWave.GetEnemyCount () > 0) {
-				Debug.Log ("Enemy Count: " + mainWave.GetEnemyCount ());
 				GameObject nextEnemy = mainWave.TryGetNextEnemy ();
-				Debug.Log (nextEnemy);
 				if (nextEnemy != null)
 					SpawnEnemy (nextEnemy);
 
@@ -72,7 +70,6 @@ public class WaveSpawner : MonoBehaviour {
 
 
 	public void SpawnEnemy(GameObject enemy){
-		Debug.Log ("Spawning enemy");
 		GameObject spawnedEnemy = (GameObject) Instantiate (enemy, this.transform.position, Quaternion.identity);
 		spawnedEnemy.GetComponent<BaseAI> ().nextWaypoint = firstWaypoint;
 		enemySpawned++;

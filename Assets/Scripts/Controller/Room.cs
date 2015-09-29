@@ -21,8 +21,10 @@ public class Room : MonoBehaviour {
 	}
 
 	public bool TryAddUnit(BaseUnit unit){
+		Debug.Log ("Count " + units.Count + ". Limit " + roomLimit);
 		if (units.Count < roomLimit) {
 			units.Add (unit);
+			unit.unitRoom = this;
 			return true;
 		}
 
@@ -30,7 +32,11 @@ public class Room : MonoBehaviour {
 	}
 
 	public void RemoveUnit(BaseUnit unit){
-		if(units.Contains(unit))
+		Debug.Log (units[0].Health);
+		Debug.Log (unit);
+		if (units.Contains (unit)) {
+			Debug.Log ("Removed");
 			units.Remove (unit);
+		}
 	}
 }
