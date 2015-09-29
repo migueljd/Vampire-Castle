@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.I)) {
+		if (Input.GetKeyDown (KeyCode.E)) {
 			RaycastHit hit;
 			
 			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
