@@ -8,8 +8,10 @@ public class WaveSpawner : MonoBehaviour {
 
 	public int numberOfWaves;
 	public int enemiesInWave;
-	public float spawnTimer;
-	public float initialTimer;
+	public float timeAtBegin;
+	public float timeBetweenUnitSpawn;
+	public float timeBetweenWaves;
+
 
 	public Waypoint firstWaypoint;
 
@@ -29,9 +31,9 @@ public class WaveSpawner : MonoBehaviour {
 				enemies.Add (enemyPrefab);
 			}
 
-			mainWave = new Wave (enemies, spawnTimer);
+			mainWave = new Wave (enemies, timeBetweenUnitSpawn);
 
-			firstSpawn = Time.time + initialTimer;
+			firstSpawn = Time.time + timeAtBegin;
 
 			numberOfWaves--;
 		}
@@ -59,11 +61,11 @@ public class WaveSpawner : MonoBehaviour {
 				for (int a = 0; a < enemiesInWave; a++) { 
 					enemies.Add (enemyPrefab);
 				}
-				mainWave = new Wave(enemies, spawnTimer); 
+				mainWave = new Wave(enemies, timeBetweenUnitSpawn); 
 
 				numberOfWaves--;
 
-				firstSpawn = Time.time + initialTimer;
+				firstSpawn = Time.time + timeBetweenWaves;
 			}
 		}
 	}
