@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class GameController : MonoBehaviour {
 
@@ -17,6 +19,7 @@ public class GameController : MonoBehaviour {
 
 	public Text endGameText;
 	public Text availableUnitPoolText;
+
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +39,7 @@ public class GameController : MonoBehaviour {
 			
 			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
 			
+			Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 10);
 			if(Physics.Raycast(ray,  out hit, 20, ~ (1 << LayerMask.NameToLayer("Default")))){
 
 				BaseUnit unit = hit.collider.transform.GetComponent<BaseUnit>();
@@ -48,7 +52,6 @@ public class GameController : MonoBehaviour {
 					
 			}
 		} else if (Input.GetMouseButtonDown (1)) {
-
 
 			if(selectedUnit != null){
 				RaycastHit hit;
@@ -73,7 +76,9 @@ public class GameController : MonoBehaviour {
 			
 			
 			if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
-				if(toSpawn != null && availableUnitPool > 0){
+				Room roomHit = hit.collider.transform.GetComponent<Room>();
+
+				if(toSpawn != null && availableUnitPool > 0 && roomHit != null && roomHit.TryAddUnit(toSpawn)){
 					
 					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
 					Instantiate(toSpawn, spawnPoint, Quaternion.identity);
@@ -109,3 +114,4 @@ public class GameController : MonoBehaviour {
 
 	
 }
+

@@ -6,36 +6,65 @@ public class WaveSpawner : MonoBehaviour {
 
 	private Wave mainWave;
 
+	public int numberOfWaves;
 	public int enemiesInWave;
 	public float spawnTimer;
+	public float initialTimer;
 
 	public Waypoint firstWaypoint;
 
 	public static int enemySpawned;
 
+	private float firstSpawn;
+	private Wave waveClone;
+
 	// Use this for initialization
 	void Start () {
 		//For test purposes, create a list
-		GameObject enemyPrefab = (GameObject) Resources.Load ("Prefabs/Enemy");
-		Debug.Log (enemyPrefab);
-		List<GameObject> enemies = new List<GameObject> ();
+		if (numberOfWaves > 0) {
+			GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
+			List<GameObject> enemies = new List<GameObject> ();
 
-		for (int a = 0; a < enemiesInWave; a++) { 
-			enemies.Add (enemyPrefab);
+			for (int a = 0; a < enemiesInWave; a++) { 
+				enemies.Add (enemyPrefab);
+			}
+
+			mainWave = new Wave (enemies, spawnTimer);
+
+			firstSpawn = Time.time + initialTimer;
+
+			numberOfWaves--;
 		}
 
-		mainWave = new Wave (enemies, spawnTimer);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (mainWave.GetEnemyCount () > 0) {
-			Debug.Log ("Enemy Count: " + mainWave.GetEnemyCount ());
-			GameObject nextEnemy = mainWave.TryGetNextEnemy();
-			Debug.Log (nextEnemy);
-			if(nextEnemy != null)
-				SpawnEnemy(nextEnemy);
 
+		if (firstSpawn <= Time.time ) {
+
+			if (mainWave != null && mainWave.GetEnemyCount () > 0) {
+				Debug.Log ("Enemy Count: " + mainWave.GetEnemyCount ());
+				GameObject nextEnemy = mainWave.TryGetNextEnemy ();
+				Debug.Log (nextEnemy);
+				if (nextEnemy != null)
+					SpawnEnemy (nextEnemy);
+
+			}
+			else if(numberOfWaves > 0){
+
+				List<GameObject> enemies = new List<GameObject> ();
+				GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
+				
+				for (int a = 0; a < enemiesInWave; a++) { 
+					enemies.Add (enemyPrefab);
+				}
+				mainWave = new Wave(enemies, spawnTimer); 
+
+				numberOfWaves--;
+
+				firstSpawn = Time.time + initialTimer;
+			}
 		}
 	}
 
@@ -49,7 +78,12 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	public int GetEnemyToSpawn(){
-		return mainWave.GetEnemyCount ();
+
+
+		if (mainWave != null)
+			return mainWave.GetEnemyCount ();
+		else
+			return 0;
 	}
 }
 

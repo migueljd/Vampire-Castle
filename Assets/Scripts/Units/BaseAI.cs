@@ -9,7 +9,7 @@ public class BaseAI : BaseUnit {
 	public Waypoint nextWaypoint;
 
 
-	private static float distanceThreshold = 1.1f;
+	private static float distanceThreshold = 2;
 
 	// Use this for initialization
 	protected override void Start () {
