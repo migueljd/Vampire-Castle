@@ -27,8 +27,10 @@ public class BaseUnit : MonoBehaviour {
 	// Update is called once per frame
 	protected virtual void Update () {
 		if (Health <= 0) {
-			if(this is BaseAI)
+			if(this is BaseAI){
 				WaveSpawner.enemySpawned--;
+				GameController.GiveBlood();
+			}
 			else if(this.name == "Dracula")
 				GameController.draculaAlive = false;
 			else if(this is BaseUnit){
@@ -93,6 +95,10 @@ public class BaseUnit : MonoBehaviour {
 //		Debug.Log ("Unit " + this.name + " took " + damage + " damage");
 		Health -= damage;
 //		Debug.Log (string.Format ("Unit {0} remaining health is {1}", this.name, this.Health));
+
+		if (this.name == "Dracula")
+			GameController.UpdateDraculaHealthText ();
+
 		if (Health <= 0)
 			return true;
 		return false;

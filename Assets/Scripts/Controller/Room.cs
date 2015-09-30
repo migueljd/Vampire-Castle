@@ -12,7 +12,6 @@ public class Room : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		units = new List<BaseUnit> ();
-		this.roomTransform = roomTransform;
 	}
 	
 	// Update is called once per frame

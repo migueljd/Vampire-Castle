@@ -11,6 +11,11 @@ public class GameController : MonoBehaviour {
 
 	public BaseUnit toSpawn;
 
+	public BaseUnit dracula;
+	public int unitHealthCost;
+	public int enemyHealthYield;
+
+
 	public WaveSpawner waveSpawner;
 	public static bool draculaAlive = true;
 
@@ -18,14 +23,20 @@ public class GameController : MonoBehaviour {
 	public int availableUnitPool;
 
 	public Text endGameText;
-	public Text availableUnitPoolText;
+	public Text draculaHealthText;
 
+	private static GameController instance;
+
+
+	void Awake(){
+		instance = this;
+	}
 
 	// Use this for initialization
 	void Start () {
 //		Debug.Log(~(1<< LayerMask.NameToLayer("Controller")));
 //		Debug.Log (~(1 <<LayerMask.NameToLayer ("Default")));
-		availableUnitPoolText.text = "Available units: " + availableUnitPool;
+		draculaHealthText.text = "Blood: " + dracula.Health; 
 	}
 	
 	// Update is called once per frame
@@ -69,6 +80,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
+		//Spawn unit
 		if (Input.GetKeyDown (KeyCode.E)) {
 			RaycastHit hit;
 			
@@ -78,14 +90,14 @@ public class GameController : MonoBehaviour {
 			if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
 				Room roomHit = hit.collider.transform.GetComponent<Room>();
 
-				if(toSpawn != null && availableUnitPool > 0 && roomHit != null){
+				if(toSpawn != null && dracula.Health > unitHealthCost && roomHit != null){
 					
 					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
 
 					BaseUnit go = (BaseUnit) Instantiate(toSpawn, spawnPoint, Quaternion.identity);
 					if( roomHit.TryAddUnit(go)){
-						availableUnitPool--;
-						availableUnitPoolText.text = "Available units: " + availableUnitPool;
+						dracula.Health -= unitHealthCost;
+						draculaHealthText.text = "Blood: " + dracula.Health;
 					}
 					else{
 						Destroy(go.gameObject);
@@ -117,7 +129,14 @@ public class GameController : MonoBehaviour {
 		return new Vector3(hit.point.x,hit.point.y ,z);
 	}
 
+	public static void UpdateDraculaHealthText(){
+		instance.draculaHealthText.text = "Blood: " + instance.dracula.Health; 
+	}
 
+	public static void GiveBlood(){
+		instance.dracula.Health += instance.enemyHealthYield;
+		UpdateDraculaHealthText ();
+	}
 	
 }
 
