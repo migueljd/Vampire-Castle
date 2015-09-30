@@ -57,7 +57,7 @@ public class BaseUnit : MonoBehaviour {
 		if (target == null) {
 			BaseUnit unit = other.GetComponent<BaseUnit> ();
 			if(this.enemy){
-				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this)) {
+				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
 
 					EnterCombat (unit);
 					agent.Stop ();
@@ -74,8 +74,8 @@ public class BaseUnit : MonoBehaviour {
 		if (target == null) {
 			BaseUnit unit = other.GetComponent<BaseUnit> ();
 			if(this.enemy){
-				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this)) {
-					
+				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
+
 					EnterCombat (unit);
 					agent.Stop ();
 				}
