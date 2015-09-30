@@ -31,10 +31,7 @@ public class Room : MonoBehaviour {
 	}
 
 	public void RemoveUnit(BaseUnit unit){
-		Debug.Log (units[0].Health);
-		Debug.Log (unit);
 		if (units.Contains (unit)) {
-			Debug.Log ("Removed");
 			units.Remove (unit);
 		}
 	}
