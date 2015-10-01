@@ -16,6 +16,7 @@ public class WaveSpawner : MonoBehaviour {
 	public Waypoint firstWaypoint;
 
 	public static int enemySpawned;
+	
 
 	private float firstSpawn;
 	private Wave waveClone;
@@ -30,7 +31,7 @@ public class WaveSpawner : MonoBehaviour {
 
 			for (int a = 0; a < enemiesInWave; a++) { 
 				float random = Random.Range(0.0f, 1.0f);
-				if(random >= .7f)
+				if(random >= 1 - GameController.chanceForBigGuySpawn_)
 					enemies.Add(bigEnemy);
 				else
 					enemies.Add (enemyPrefab);
@@ -65,7 +66,7 @@ public class WaveSpawner : MonoBehaviour {
 				
 				for (int a = 0; a < enemiesInWave; a++) { 
 					float random = Random.Range(0.0f, 1.0f);
-					if(random >= .7f)
+					if(random >= 1 - GameController.chanceForBigGuySpawn_)
 						enemies.Add(bigEnemy);
 					else
 						enemies.Add (enemyPrefab);

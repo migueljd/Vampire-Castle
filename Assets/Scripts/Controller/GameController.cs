@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public int enemyHealthYield;
 	public int draculaMinBlood;
 
+	public float chanceForBigGuySpawn;
 
 	public WaveSpawner waveSpawner;
 	public static bool draculaAlive = true;
@@ -29,9 +30,11 @@ public class GameController : MonoBehaviour {
 
 	private static GameController instance;
 
+	public static float chanceForBigGuySpawn_;
 
 	void Awake(){
 		instance = this;
+		chanceForBigGuySpawn_ = chanceForBigGuySpawn;
 	}
 
 	// Use this for initialization
