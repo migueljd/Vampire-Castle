@@ -5,6 +5,8 @@ public class Markup : MonoBehaviour {
 
 	public Color colorMarkup;
 
+	public bool available = true;
+
 	// Use this for initialization
 	void Start () {
 	

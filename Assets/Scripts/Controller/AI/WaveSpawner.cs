@@ -25,10 +25,15 @@ public class WaveSpawner : MonoBehaviour {
 		//For test purposes, create a list
 		if (numberOfWaves > 0) {
 			GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
+			GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
 			List<GameObject> enemies = new List<GameObject> ();
 
 			for (int a = 0; a < enemiesInWave; a++) { 
-				enemies.Add (enemyPrefab);
+				float random = Random.Range(0.0f, 1.0f);
+				if(random >= .7f)
+					enemies.Add(bigEnemy);
+				else
+					enemies.Add (enemyPrefab);
 			}
 
 			mainWave = new Wave (enemies, timeBetweenUnitSpawn);
@@ -55,9 +60,15 @@ public class WaveSpawner : MonoBehaviour {
 
 				List<GameObject> enemies = new List<GameObject> ();
 				GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
+				GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
+
 				
 				for (int a = 0; a < enemiesInWave; a++) { 
-					enemies.Add (enemyPrefab);
+					float random = Random.Range(0.0f, 1.0f);
+					if(random >= .7f)
+						enemies.Add(bigEnemy);
+					else
+						enemies.Add (enemyPrefab);
 				}
 				mainWave = new Wave(enemies, timeBetweenUnitSpawn); 
 

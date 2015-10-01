@@ -64,23 +64,24 @@ public class GameController : MonoBehaviour {
 				}
 					
 			}
-		} else if (Input.GetMouseButtonDown (1)) {
-
-			if(selectedUnit != null){
-				RaycastHit hit;
-
-				Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
-
-
-				if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
-					if(selectedUnit != null){
-
-						Vector3 destination = GetCorrectedDepthPoint(hit);
-						selectedUnit.MoveTo(destination);
-					}
-				}
-			}
-		}
+		} 
+//		else if (Input.GetMouseButtonDown (1)) {
+//
+//			if(selectedUnit != null){
+//				RaycastHit hit;
+//
+//				Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
+//
+//
+//				if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
+//					if(selectedUnit != null){
+//
+//						Vector3 destination = GetCorrectedDepthPoint(hit);
+//						selectedUnit.MoveTo(destination);
+//					}
+//				}
+//			}
+//		}
 
 		//Spawn unit
 		if (Input.GetKeyDown (KeyCode.E)) {
@@ -93,11 +94,14 @@ public class GameController : MonoBehaviour {
 				Room roomHit = hit.collider.transform.GetComponent<Room>();
 
 				if(toSpawn != null && dracula.Health > unitHealthCost && (dracula.Health - unitHealthCost) >= draculaMinBlood  && roomHit != null){
-					
-					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
+
+					Markup m;
+
+					Vector3 spawnPoint = GetCorrectedDepthPoint(hit, out m) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
 
 					BaseUnit go = (BaseUnit) Instantiate(toSpawn, spawnPoint, Quaternion.identity);
-					if( roomHit.TryAddUnit(go)){
+					go.markup = m;
+					if( roomHit.TryAddUnit(go) && m != null){
 						dracula.Health -= unitHealthCost;
 						draculaHealthText.text = "Blood: " + dracula.Health;
 					}
@@ -120,15 +124,28 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	private Vector3 GetCorrectedDepthPoint(RaycastHit hit){
+	private Vector3 GetCorrectedDepthPoint(RaycastHit hit, out Markup m){
 		float z = 0;
-	
-		for(int a =0; a < hit.collider.transform.childCount; a++){
+		float x = 0;
+		Debug.Log (hit.collider.name);
+		m = null;
+		for(int a =0; a < hit.collider.transform.childCount && m == null; a++){
 			Transform child = hit.collider.transform.GetChild(a);
-			if(child.name == "DepthMarkup") z = child.position.z;
+			if(child.name == "DepthMarkup"){
+				m = child.GetComponent<Markup>();
+				if(m.available){
+					z = child.position.z;
+					x = child.position.x;
+					Debug.Log (x);
+					m.available = false;
+				}
+				else{
+					m = null;
+				}
+			}
 		}
 
-		return new Vector3(hit.point.x,hit.point.y ,z);
+		return new Vector3(x,hit.point.y ,z);
 	}
 
 	public static void UpdateDraculaHealthText(){

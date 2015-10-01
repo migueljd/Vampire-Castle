@@ -18,6 +18,8 @@ public class BaseUnit : MonoBehaviour {
 
 	public Room unitRoom;
 
+	public Markup markup;
+
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -26,6 +28,16 @@ public class BaseUnit : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected virtual void Update () {
+
+		if (target != null && nextAttackTime <= Time.time) {
+			nextAttackTime = Time.time + attackSpeed;
+			Attack ();
+
+		}
+
+	}
+
+	protected virtual void LateUpdate(){
 		if (Health <= 0) {
 			if(this is BaseAI){
 				WaveSpawner.enemySpawned--;
@@ -35,16 +47,11 @@ public class BaseUnit : MonoBehaviour {
 				GameController.draculaAlive = false;
 			else if(this is BaseUnit){
 				unitRoom.RemoveUnit(this);
+				markup.available = true;
 			}
 			Destroy(this.gameObject);
 			return;
 		}
-		if (target != null && nextAttackTime <= Time.time) {
-			nextAttackTime = Time.time + attackSpeed;
-			Attack ();
-
-		}
-
 	}
 
 

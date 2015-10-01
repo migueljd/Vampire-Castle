@@ -7,7 +7,7 @@ public class Room : MonoBehaviour {
 	private List<BaseUnit> units;
 	private Transform roomTransform;
 
-	public int roomLimit;
+	private int roomLimit = 10000;
 	
 	// Use this for initialization
 	void Start () {
