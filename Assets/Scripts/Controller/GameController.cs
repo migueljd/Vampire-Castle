@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 	public BaseUnit dracula;
 	public int unitHealthCost;
 	public int enemyHealthYield;
+	public int draculaMinBlood;
 
 
 	public WaveSpawner waveSpawner;
@@ -24,6 +25,7 @@ public class GameController : MonoBehaviour {
 
 	public Text endGameText;
 	public Text draculaHealthText;
+	
 
 	private static GameController instance;
 
@@ -90,7 +92,7 @@ public class GameController : MonoBehaviour {
 			if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
 				Room roomHit = hit.collider.transform.GetComponent<Room>();
 
-				if(toSpawn != null && dracula.Health > unitHealthCost && roomHit != null){
+				if(toSpawn != null && dracula.Health > unitHealthCost && (dracula.Health - unitHealthCost) >= draculaMinBlood  && roomHit != null){
 					
 					Vector3 spawnPoint = GetCorrectedDepthPoint(hit) + new Vector3(0, toSpawn.transform.GetComponent<Collider>().bounds.size.y/2, 0);
 

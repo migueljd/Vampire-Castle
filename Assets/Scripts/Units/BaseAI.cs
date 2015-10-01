@@ -2,12 +2,8 @@
 using System.Collections;
 
 public class BaseAI : BaseUnit {
-
-
-
-
+	
 	public Waypoint nextWaypoint;
-
 
 	private static float distanceThreshold = 2;
 
