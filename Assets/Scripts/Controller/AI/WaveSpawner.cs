@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class WaveSpawner : MonoBehaviour {
 
 	private Wave mainWave;
+	private List<Wave> waveList;
 
 	public int numberOfWaves;
 	public int enemiesInWave;
@@ -15,8 +16,10 @@ public class WaveSpawner : MonoBehaviour {
 
 	public Waypoint firstWaypoint;
 
+	public string XmlFileName;
+
 	public static int enemySpawned;
-	
+
 
 	private float firstSpawn;
 	private Wave waveClone;
@@ -24,21 +27,27 @@ public class WaveSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//For test purposes, create a list
-		if (numberOfWaves > 0) {
-			GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
-			GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
-			List<GameObject> enemies = new List<GameObject> ();
+		if (XmlFileName != null && XmlFileName != "") {
+			WaveCreator wc = new WaveCreator ();
+			waveList = wc.DeserializeXml ("Assets/Resources/" + XmlFileName + ".xml");
+		}
 
-			for (int a = 0; a < enemiesInWave; a++) { 
-				float random = Random.Range(0.0f, 1.0f);
-				if(random >= 1 - GameController.chanceForBigGuySpawn_)
-					enemies.Add(bigEnemy);
-				else
-					enemies.Add (enemyPrefab);
-			}
+		if (waveList != null && waveList.Count > 0) {
+//			GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
+//			GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
+//			List<GameObject> enemies = new List<GameObject> ();
+//
+//			for (int a = 0; a < enemiesInWave; a++) { 
+//				float random = Random.Range(0.0f, 1.0f);
+//				if(random >= 1 - GameController.chanceForBigGuySpawn_)
+//					enemies.Add(bigEnemy);
+//				else
+//					enemies.Add (enemyPrefab);
+//			}
 
-			mainWave = new Wave (enemies, timeBetweenUnitSpawn);
 
+			mainWave = waveList[0];
+			waveList.RemoveAt(0);
 			firstSpawn = Time.time + timeAtBegin;
 
 			numberOfWaves--;
@@ -57,21 +66,23 @@ public class WaveSpawner : MonoBehaviour {
 					SpawnEnemy (nextEnemy);
 
 			}
-			else if(numberOfWaves > 0){
+			else if(waveList != null && waveList.Count > 0){
 
-				List<GameObject> enemies = new List<GameObject> ();
-				GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
-				GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
+//				List<GameObject> enemies = new List<GameObject> ();
+//				GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
+//				GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
+//
+//				
+//				for (int a = 0; a < enemiesInWave; a++) { 
+//					float random = Random.Range(0.0f, 1.0f);
+//					if(random >= 1 - GameController.chanceForBigGuySpawn_)
+//						enemies.Add(bigEnemy);
+//					else
+//						enemies.Add (enemyPrefab);
+//				}
 
-				
-				for (int a = 0; a < enemiesInWave; a++) { 
-					float random = Random.Range(0.0f, 1.0f);
-					if(random >= 1 - GameController.chanceForBigGuySpawn_)
-						enemies.Add(bigEnemy);
-					else
-						enemies.Add (enemyPrefab);
-				}
-				mainWave = new Wave(enemies, timeBetweenUnitSpawn); 
+				mainWave = waveList[0];
+				waveList.RemoveAt(0);
 
 				numberOfWaves--;
 
