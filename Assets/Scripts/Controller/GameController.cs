@@ -6,10 +6,11 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
-	public BaseUnit selectedUnit;
-	public BaseUnit selectedEnemy;
+//	public BaseUnit selectedUnit;
+//	public BaseUnit selectedEnemy;
 
-	public BaseUnit toSpawn;
+	private BaseUnit toSpawn;
+	private BaseUnit rangedSpawn;
 
 	public BaseUnit dracula;
 	public int unitHealthCost;
@@ -21,8 +22,9 @@ public class GameController : MonoBehaviour {
 	public WaveSpawner waveSpawner;
 	public static bool draculaAlive = true;
 
-
-	public int availableUnitPool;
+	public int maxDraculaBlood = 60;
+//
+//	public int availableUnitPool;
 
 	public Text endGameText;
 	public Text draculaHealthText;
@@ -42,6 +44,9 @@ public class GameController : MonoBehaviour {
 //		Debug.Log(~(1<< LayerMask.NameToLayer("Controller")));
 //		Debug.Log (~(1 <<LayerMask.NameToLayer ("Default")));
 		draculaHealthText.text = "Blood: " + dracula.Health; 
+		Debug.Log (Resources.Load ("Prefabs/Ally"));
+		toSpawn = ((GameObject) Resources.Load ("Prefabs/Ally")).GetComponent<BaseUnit>();
+		rangedSpawn = ((GameObject) Resources.Load ("Prefabs/RangedAlly")).GetComponent<BaseUnit>();
 	}
 	
 	// Update is called once per frame
@@ -50,24 +55,24 @@ public class GameController : MonoBehaviour {
 		CheckEndGame ();
 
 
-		if (Input.GetMouseButtonDown (0)) {
-			RaycastHit hit;
-			
-			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
-			
-			Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 10);
-			if(Physics.Raycast(ray,  out hit, 20, ~ (1 << LayerMask.NameToLayer("Default")))){
-
-				BaseUnit unit = hit.collider.transform.GetComponent<BaseUnit>();
-				if(unit != null){
-					if(unit.enemy)
-						selectedEnemy = unit;
-					else
-						selectedUnit = unit;
-				}
-					
-			}
-		} 
+//		if (Input.GetMouseButtonDown (0)) {
+//			RaycastHit hit;
+//			
+//			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
+//			
+//			Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 10);
+//			if(Physics.Raycast(ray,  out hit, 20, ~ (1 << LayerMask.NameToLayer("Default")))){
+//
+//				BaseUnit unit = hit.collider.transform.GetComponent<BaseUnit>();
+//				if(unit != null){
+//					if(unit.enemy)
+//						selectedEnemy = unit;
+//					else
+//						selectedUnit = unit;
+//				}
+//					
+//			}
+//		} 
 //		else if (Input.GetMouseButtonDown (1)) {
 //
 //			if(selectedUnit != null){
@@ -110,6 +115,33 @@ public class GameController : MonoBehaviour {
 					}
 					else{
 						Destroy(go.gameObject);
+					}
+				}
+			}
+
+		}
+		if (Input.GetKeyDown (KeyCode.R)) {
+			RaycastHit hit;
+			
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			
+			
+			if (Physics.Raycast (ray, out hit, 20, (1 << LayerMask.NameToLayer ("Controller")))) {
+				Room roomHit = hit.collider.transform.GetComponent<Room> ();
+				
+				if (rangedSpawn != null && dracula.Health > unitHealthCost && (dracula.Health - unitHealthCost) >= draculaMinBlood && roomHit != null) {
+					
+					Markup m;
+					
+					Vector3 spawnPoint = GetCorrectedDepthPoint (hit, out m) + new Vector3 (0, rangedSpawn.transform.GetComponent<Collider> ().bounds.size.y / 2, 0);
+					
+					BaseUnit go = (BaseUnit)Instantiate (rangedSpawn, spawnPoint, Quaternion.identity);
+					go.markup = m;
+					if (roomHit.TryAddUnit (go) && m != null) {
+						dracula.Health -= unitHealthCost;
+						draculaHealthText.text = "Blood: " + dracula.Health;
+					} else {
+						Destroy (go.gameObject);
 					}
 				}
 			}
@@ -156,7 +188,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	public static void GiveBlood(){
-		instance.dracula.Health += instance.enemyHealthYield;
+		if (instance.dracula.Health + instance.enemyHealthYield > instance.maxDraculaBlood)
+			instance.dracula.Health = instance.maxDraculaBlood;
+		else
+			instance.dracula.Health += instance.enemyHealthYield;
 		UpdateDraculaHealthText ();
 	}
 	
