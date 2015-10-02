@@ -61,7 +61,11 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 	protected virtual void OnTriggerEnter(Collider other){
-		if (target == null) {
+		float dist = Vector3.Distance (this.transform.position, other.transform.position);
+		Collider thisCol = this.GetComponent<Collider> ();
+		if (target == null && 
+		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
+		    ) {
 			BaseUnit unit = other.GetComponent<BaseUnit> ();
 			if(this.enemy){
 				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
@@ -78,8 +82,11 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 	protected virtual void OnTriggerStay(Collider other){
-		if (target == null) {
-			BaseUnit unit = other.GetComponent<BaseUnit> ();
+		float dist = Vector3.Distance (this.transform.position, other.transform.position);
+		Collider thisCol = this.GetComponent<Collider> ();
+		if (target == null && 
+		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
+		    ) {			BaseUnit unit = other.GetComponent<BaseUnit> ();
 			if(this.enemy){
 				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
 
