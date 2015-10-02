@@ -32,5 +32,16 @@
 </EnemiesList>
 <TimerPerEnemy>0.1</TimerPerEnemy>
 </Wave>
+<Wave>
+<EnemiesList>
+<Enemy>Enemy</Enemy>
+<Enemy>Enemy</Enemy>
+<Enemy>Enemy</Enemy>
+<Enemy>Enemy</Enemy>
+<Enemy>Enemy</Enemy>
+<Enemy>Enemy</Enemy>
+</EnemiesList>
+<TimerPerEnemy>0.1</TimerPerEnemy>
+</Wave>
     </Waves>
 </WaveList>

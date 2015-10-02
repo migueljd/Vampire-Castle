@@ -7,17 +7,11 @@
 <Enemy>Enemy</Enemy>
 <Enemy>Enemy</Enemy>
 <Enemy>Enemy</Enemy>
-<Enemy>Enemy</Enemy>
-<Enemy>Enemy</Enemy>
-<Enemy>Enemy</Enemy>
 </EnemiesList>
 <TimerPerEnemy>0.5</TimerPerEnemy>
 </Wave>
 <Wave>
 <EnemiesList>
-<Enemy>Enemy</Enemy>
-<Enemy>Enemy</Enemy>
-<Enemy>Enemy</Enemy>
 <Enemy>Enemy</Enemy>
 <Enemy>Enemy</Enemy>
 <Enemy>Enemy</Enemy>
