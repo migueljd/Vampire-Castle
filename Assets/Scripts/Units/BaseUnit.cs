@@ -61,12 +61,17 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 	protected virtual void OnTriggerEnter(Collider other){
-		float dist = Vector3.Distance (this.transform.position, other.transform.position);
-		Collider thisCol = this.GetComponent<Collider> ();
-		if (target == null && 
-		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
-		    ) {
-			BaseUnit unit = other.GetComponent<BaseUnit> ();
+//		float dist = Vector3.Distance (this.transform.position, other.transform.position);
+//		Collider thisCol = this.GetComponent<Collider> ();
+//		Debug.Log ("Dist: " + dist);
+//		if(thisCol is SphereCollider) Debug.Log ("Radius: " + ((SphereCollider) thisCol).radius);
+//		if (target == null && 
+//		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
+//		    ) {
+		if(target == null){
+			if(other.transform.parent == null)
+				return;
+			BaseUnit unit = other.transform.parent.GetComponent<BaseUnit> ();
 			if(this.enemy){
 				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
 
@@ -82,11 +87,18 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 	protected virtual void OnTriggerStay(Collider other){
-		float dist = Vector3.Distance (this.transform.position, other.transform.position);
-		Collider thisCol = this.GetComponent<Collider> ();
-		if (target == null && 
-		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
-		    ) {			BaseUnit unit = other.GetComponent<BaseUnit> ();
+//		float dist = Vector3.Distance (this.transform.position, other.transform.position);
+//		Collider thisCol = this.GetComponent<Collider> ();
+//		Debug.Log ("Dist: " + dist);
+//		if(thisCol is SphereCollider) Debug.Log ("Radius: " + ((SphereCollider) thisCol).radius);
+//		if (target == null && 
+//		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
+//		    ) {
+		if(target == null){
+			if(other.transform.parent == null)
+				return;
+
+			BaseUnit unit = other.transform.parent.GetComponent<BaseUnit> ();
 			if(this.enemy){
 				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
 
