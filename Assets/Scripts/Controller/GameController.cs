@@ -12,11 +12,19 @@ public class GameController : MonoBehaviour {
 	private BaseUnit toSpawn;
 	private BaseUnit rangedSpawn;
 
+	[Header("Dracula")]
 	public BaseUnit dracula;
 	public int unitHealthCost;
 	public int enemyHealthYield;
 	public int draculaMinBlood;
 
+
+	[Header("Cooldown")]
+	public float ECooldown;
+	public float RCooldown;
+
+
+	[Header("Spawnning")]
 	public float chanceForBigGuySpawn;
 
 	public WaveSpawner waveSpawner;
@@ -26,13 +34,19 @@ public class GameController : MonoBehaviour {
 //
 //	public int availableUnitPool;
 
+	[Header("UI")]
 	public Text endGameText;
 	public Text draculaHealthText;
-	
+	public Text ECooldownText;
+	public Text RCooldownText;
+
+	private float lastETime;
+	private float lastRTime;
 
 	private static GameController instance;
 
 	public static float chanceForBigGuySpawn_;
+
 
 	void Awake(){
 		instance = this;
@@ -47,12 +61,18 @@ public class GameController : MonoBehaviour {
 		Debug.Log (Resources.Load ("Prefabs/Ally"));
 		toSpawn = ((GameObject) Resources.Load ("Prefabs/Ally")).GetComponent<BaseUnit>();
 		rangedSpawn = ((GameObject) Resources.Load ("Prefabs/RangedAlly")).GetComponent<BaseUnit>();
+		lastETime = -ECooldown;
+		lastRTime = -RCooldown;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		CheckEndGame ();
+
+		ECooldownText.text = "E Cooldown: " + (lastETime + ECooldown - Time.time < 0 ? 0 : lastETime + ECooldown - Time.time).ToString("0.00");
+		RCooldownText.text = "R Cooldown: " + (lastRTime + RCooldown - Time.time < 0 ? 0 : lastRTime + RCooldown - Time.time).ToString("0.00");
+
 
 
 //		if (Input.GetMouseButtonDown (0)) {
@@ -92,7 +112,7 @@ public class GameController : MonoBehaviour {
 //		}
 
 		//Spawn unit
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKeyDown (KeyCode.E) && lastETime + ECooldown <= Time.time) {
 			RaycastHit hit;
 			
 			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -110,6 +130,7 @@ public class GameController : MonoBehaviour {
 					BaseUnit go = (BaseUnit) Instantiate(toSpawn, spawnPoint, Quaternion.identity);
 					go.markup = m;
 					if( roomHit.TryAddUnit(go) && m != null){
+						lastETime = Time.time;
 						dracula.Health -= unitHealthCost;
 						draculaHealthText.text = "Blood: " + dracula.Health;
 					}
@@ -120,7 +141,7 @@ public class GameController : MonoBehaviour {
 			}
 
 		}
-		if (Input.GetKeyDown (KeyCode.R)) {
+		if (Input.GetKeyDown (KeyCode.R) && lastRTime + RCooldown <= Time.time) {
 			RaycastHit hit;
 			
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -138,6 +159,7 @@ public class GameController : MonoBehaviour {
 					BaseUnit go = (BaseUnit)Instantiate (rangedSpawn, spawnPoint, Quaternion.identity);
 					go.markup = m;
 					if (roomHit.TryAddUnit (go) && m != null) {
+						lastRTime = Time.time;
 						dracula.Health -= unitHealthCost;
 						draculaHealthText.text = "Blood: " + dracula.Health;
 					} else {
