@@ -1,0 +1,266 @@
+fileFormatVersion: 2
+guid: 2f39eb16ca9acd14f9814f0a1c14bd3d
+timeCreated: 1444242425
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HumanSoldier_Hips
+    100004: HumanSoldier_LeftArm
+    100006: HumanSoldier_LeftFoot
+    100008: HumanSoldier_LeftForeArm
+    100010: HumanSoldier_LeftHand
+    100012: HumanSoldier_LeftLeg
+    100014: HumanSoldier_LeftShoulder
+    100016: HumanSoldier_LeftToeBase
+    100018: HumanSoldier_LeftUpLeg
+    100020: HumanSoldier_Neck
+    100022: HumanSoldier_Reference
+    100024: HumanSoldier_RightArm
+    100026: HumanSoldier_RightFoot
+    100028: HumanSoldier_RightForeArm
+    100030: HumanSoldier_RightHand
+    100032: HumanSoldier_RightLeg
+    100034: HumanSoldier_RightShoulder
+    100036: HumanSoldier_RightToeBase
+    100038: HumanSoldier_RightUpLeg
+    100040: HumanSoldier_Spine
+    100042: HumanSoldier_Spine1
+    100044: HumanSoldierBody
+    400000: //RootNode
+    400002: HumanSoldier_Hips
+    400004: HumanSoldier_LeftArm
+    400006: HumanSoldier_LeftFoot
+    400008: HumanSoldier_LeftForeArm
+    400010: HumanSoldier_LeftHand
+    400012: HumanSoldier_LeftLeg
+    400014: HumanSoldier_LeftShoulder
+    400016: HumanSoldier_LeftToeBase
+    400018: HumanSoldier_LeftUpLeg
+    400020: HumanSoldier_Neck
+    400022: HumanSoldier_Reference
+    400024: HumanSoldier_RightArm
+    400026: HumanSoldier_RightFoot
+    400028: HumanSoldier_RightForeArm
+    400030: HumanSoldier_RightHand
+    400032: HumanSoldier_RightLeg
+    400034: HumanSoldier_RightShoulder
+    400036: HumanSoldier_RightToeBase
+    400038: HumanSoldier_RightUpLeg
+    400040: HumanSoldier_Spine
+    400042: HumanSoldier_Spine1
+    400044: HumanSoldierBody
+    4300000: HumanSoldierBody
+    7400000: Walk
+    7400002: Attack
+    9500000: //RootNode
+    13700000: HumanSoldierBody
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: HumanSoldier_Reference
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg/HumanSoldier_LeftLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg/HumanSoldier_LeftLeg/HumanSoldier_LeftFoot
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg/HumanSoldier_LeftLeg/HumanSoldier_LeftFoot/HumanSoldier_LeftToeBase
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg/HumanSoldier_RightLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg/HumanSoldier_RightLeg/HumanSoldier_RightFoot
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg/HumanSoldier_RightLeg/HumanSoldier_RightFoot/HumanSoldier_RightToeBase
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder/HumanSoldier_LeftArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder/HumanSoldier_LeftArm/HumanSoldier_LeftForeArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder/HumanSoldier_LeftArm/HumanSoldier_LeftForeArm/HumanSoldier_LeftHand
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_Neck
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder/HumanSoldier_RightArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder/HumanSoldier_RightArm/HumanSoldier_RightForeArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder/HumanSoldier_RightArm/HumanSoldier_RightForeArm/HumanSoldier_RightHand
+        weight: 1
+      - path: HumanSoldierBody
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 22
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: HumanSoldier_Reference
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg/HumanSoldier_LeftLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg/HumanSoldier_LeftLeg/HumanSoldier_LeftFoot
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_LeftUpLeg/HumanSoldier_LeftLeg/HumanSoldier_LeftFoot/HumanSoldier_LeftToeBase
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg/HumanSoldier_RightLeg
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg/HumanSoldier_RightLeg/HumanSoldier_RightFoot
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_RightUpLeg/HumanSoldier_RightLeg/HumanSoldier_RightFoot/HumanSoldier_RightToeBase
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder/HumanSoldier_LeftArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder/HumanSoldier_LeftArm/HumanSoldier_LeftForeArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_LeftShoulder/HumanSoldier_LeftArm/HumanSoldier_LeftForeArm/HumanSoldier_LeftHand
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_Neck
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder/HumanSoldier_RightArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder/HumanSoldier_RightArm/HumanSoldier_RightForeArm
+        weight: 1
+      - path: HumanSoldier_Reference/HumanSoldier_Hips/HumanSoldier_Spine/HumanSoldier_Spine1/HumanSoldier_RightShoulder/HumanSoldier_RightArm/HumanSoldier_RightForeArm/HumanSoldier_RightHand
+        weight: 1
+      - path: HumanSoldierBody
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: HumanSoldier_Reference
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
