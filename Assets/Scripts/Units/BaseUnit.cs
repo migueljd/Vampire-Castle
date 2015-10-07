@@ -1,5 +1,6 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BaseUnit : MonoBehaviour {
 	
@@ -14,16 +15,21 @@ public class BaseUnit : MonoBehaviour {
 	public int Damage;
 
 
-	protected BaseUnit target;
+	public BaseUnit target;
 
 	public Room unitRoom;
 
 	public Markup markup;
 
+	[HideInInspector]
+	public List<BaseUnit> beingTargetedList;
+
+
 
 	// Use this for initialization
 	protected virtual void Start () {
 		agent = transform.GetComponent<NavMeshAgent> ();
+		beingTargetedList = new List<BaseUnit> ();
 	}
 	
 	// Update is called once per frame
@@ -39,16 +45,7 @@ public class BaseUnit : MonoBehaviour {
 
 	protected virtual void LateUpdate(){
 		if (Health <= 0) {
-			if(this is BaseAI){
-				WaveSpawner.enemySpawned--;
-				GameController.GiveBlood();
-			}
-			else if(this.name == "Dracula")
-				GameController.draculaAlive = false;
-			else if(this is BaseUnit){
-				unitRoom.RemoveUnit(this);
-				markup.available = true;
-			}
+			this.BeforeDestroy();
 			Destroy(this.gameObject);
 			return;
 		}
@@ -68,21 +65,25 @@ public class BaseUnit : MonoBehaviour {
 //		if (target == null && 
 //		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
 //		    ) {
-		if(target == null){
-			if(other.transform.parent == null)
+		BaseUnit unit = other.transform.parent != null? other.transform.parent.GetComponent<BaseUnit> () : other.GetComponent<BaseUnit>();
+		if (target == null) {
+			if (other.transform.parent == null)
 				return;
-			BaseUnit unit = other.transform.parent.GetComponent<BaseUnit> ();
-			if(this.enemy){
-				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
-
+			
+			if (this.enemy) {
+				if (unit != null && unit.enemy != this.enemy && (unit.target == null || unit.target == this || unit.name == "Dracula")) {
 					EnterCombat (unit);
-					agent.Stop ();
 				}
-			}
-			else if(unit != null && unit.enemy != this.enemy){
+			} else if (unit != null && unit.enemy != this.enemy) {
 				EnterCombat (unit);
-				agent.Stop ();
 			}
+		} 
+		else if (!this.enemy && target.gameObject != other.gameObject && unit != null && target.beingTargetedList.Count > 1 && unit.beingTargetedList.Count == 0) {
+			EnterCombat(unit);
+		}
+		else if (this.enemy && target.target != this) {
+			target = null;
+			agent.Resume();
 		}
 	}
 
@@ -94,28 +95,50 @@ public class BaseUnit : MonoBehaviour {
 //		if (target == null && 
 //		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
 //		    ) {
-		if(target == null){
-			if(other.transform.parent == null)
+		BaseUnit unit = other.transform.parent != null? other.transform.parent.GetComponent<BaseUnit> () : other.GetComponent<BaseUnit>();
+		if (target == null) {
+			if (other.transform.parent == null)
 				return;
 
-			BaseUnit unit = other.transform.parent.GetComponent<BaseUnit> ();
-			if(this.enemy){
-				if (unit != null && unit.enemy != this.enemy &&  (unit.target == null || unit.target == this || unit.name == "Dracula")) {
-
+			if (this.enemy) {
+				if (unit != null && unit.enemy != this.enemy && (unit.target == null || unit.target == this || unit.name == "Dracula")) {
 					EnterCombat (unit);
-					agent.Stop ();
 				}
-			}
-			else if(unit != null && unit.enemy != this.enemy){
+			} else if (unit != null && unit.enemy != this.enemy) {
 				EnterCombat (unit);
-				agent.Stop ();
 			}
+		} else if (!this.enemy && target.gameObject != other.gameObject && unit != null && target.beingTargetedList.Count > 1 && unit.beingTargetedList.Count == 0) {
+			EnterCombat (unit);
+		} else if (this.enemy && target.target != this) {
+			target = null;
+			agent.Resume();
 		}
 	}
 
 
 	private void EnterCombat(BaseUnit unit){
+		Debug.Log ("Combat started");
+		if(this.enemy)
+			agent.Stop ();
+
+		List<BaseUnit> list;
+		if (target != null) {
+			list = target.beingTargetedList;
+//			lock(list){
+				list.Remove(this);
+//			}
+		}
+
 		target = unit;
+
+
+		list = unit.beingTargetedList;
+
+//		lock(list){
+			list.Add(this);
+//		}
+
+
 
 	}
 
@@ -138,5 +161,17 @@ public class BaseUnit : MonoBehaviour {
 		if (Health <= 0)
 			return true;
 		return false;
+	}
+
+	protected virtual void BeforeDestroy(){
+		if (this is BaseAI) {
+			WaveSpawner.enemySpawned--;
+			GameController.GiveBlood ();
+		} else if (this.name == "Dracula")
+			GameController.draculaAlive = false;
+		else if(this is BaseUnit && !this is TowerUnit){
+			unitRoom.RemoveUnit(this);
+			markup.available = true;
+		}
 	}
 }

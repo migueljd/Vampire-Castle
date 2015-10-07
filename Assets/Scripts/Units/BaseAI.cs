@@ -20,7 +20,7 @@ public class BaseAI : BaseUnit {
 			MoveTo (nextWaypoint.transform.position);
 		}
 
-		if (Vector3.Distance (nextWaypoint.transform.position, transform.position) <= distanceThreshold && target == null) {
+		if (nextWaypoint != null && Vector3.Distance (nextWaypoint.transform.position, transform.position) <= distanceThreshold && target == null) {
 			nextWaypoint = nextWaypoint.next;
 			if (nextWaypoint != null)
 				MoveTo (nextWaypoint.transform.position);

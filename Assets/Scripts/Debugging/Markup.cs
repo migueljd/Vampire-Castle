@@ -7,6 +7,8 @@ public class Markup : MonoBehaviour {
 
 	public bool available = true;
 
+	public float radius = 1f;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +21,6 @@ public class Markup : MonoBehaviour {
 
 	void OnDrawGizmos(){
 		Gizmos.color = colorMarkup;
-		Gizmos.DrawWireSphere (this.transform.position, 1f);
+		Gizmos.DrawWireSphere (this.transform.position, radius);
 	}
 }
