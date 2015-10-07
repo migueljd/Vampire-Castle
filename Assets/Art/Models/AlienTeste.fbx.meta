@@ -1,0 +1,470 @@
+fileFormatVersion: 2
+guid: bd066da7993994e499968d5a2b538e77
+timeCreated: 1444242425
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Alien_Head
+    100002: Alien_HeadEnd
+    100004: Alien_Hips
+    100006: Alien_LeftArm
+    100008: Alien_LeftFoot
+    100010: Alien_LeftForearm
+    100012: Alien_LeftHand
+    100014: Alien_LeftIndex1
+    100016: Alien_LeftIndex2
+    100018: Alien_LeftIndex3
+    100020: Alien_LeftIndex4
+    100022: Alien_LeftLeg
+    100024: Alien_LeftMiddle1
+    100026: Alien_LeftMiddle2
+    100028: Alien_LeftMiddle3
+    100030: Alien_LeftMiddle4
+    100032: Alien_LeftPinky1
+    100034: Alien_LeftPinky2
+    100036: Alien_LeftPinky3
+    100038: Alien_LeftPinky4
+    100040: Alien_LeftShoulder
+    100042: Alien_LeftToeBase
+    100044: Alien_LeftToeBaseEnd
+    100046: Alien_LeftUpLeg
+    100048: Alien_RightArm
+    100050: Alien_RightFoot
+    100052: Alien_RightForearm
+    100054: Alien_RightHand
+    100056: Alien_RightIndex1
+    100058: Alien_RightIndex2
+    100060: Alien_RightIndex3
+    100062: Alien_RightIndex4
+    100064: Alien_RightLeg
+    100066: Alien_RightMiddle1
+    100068: Alien_RightMiddle2
+    100070: Alien_RightMiddle3
+    100072: Alien_RightMiddle4
+    100074: Alien_RightPinky1
+    100076: Alien_RightPinky2
+    100078: Alien_RightPinky3
+    100080: Alien_RightPinky4
+    100082: Alien_RightShoulder
+    100084: Alien_RightToeBase
+    100086: Alien_RightToeBaseEnd
+    100088: Alien_RightUpLeg
+    100090: Alien_Spine
+    100092: Alien_Spine1
+    100094: Alien_Spine2
+    100096: Alien_Tail
+    100098: Alien_Tail1
+    100100: Alien_Tail2
+    100102: Alien_Tail3
+    100104: Alien_Tail4
+    100106: Alien_Tail5
+    100108: Alien_TailEnd
+    100110: AlienBody
+    100112: //RootNode
+    400000: Alien_Head
+    400002: Alien_HeadEnd
+    400004: Alien_Hips
+    400006: Alien_LeftArm
+    400008: Alien_LeftFoot
+    400010: Alien_LeftForearm
+    400012: Alien_LeftHand
+    400014: Alien_LeftIndex1
+    400016: Alien_LeftIndex2
+    400018: Alien_LeftIndex3
+    400020: Alien_LeftIndex4
+    400022: Alien_LeftLeg
+    400024: Alien_LeftMiddle1
+    400026: Alien_LeftMiddle2
+    400028: Alien_LeftMiddle3
+    400030: Alien_LeftMiddle4
+    400032: Alien_LeftPinky1
+    400034: Alien_LeftPinky2
+    400036: Alien_LeftPinky3
+    400038: Alien_LeftPinky4
+    400040: Alien_LeftShoulder
+    400042: Alien_LeftToeBase
+    400044: Alien_LeftToeBaseEnd
+    400046: Alien_LeftUpLeg
+    400048: Alien_RightArm
+    400050: Alien_RightFoot
+    400052: Alien_RightForearm
+    400054: Alien_RightHand
+    400056: Alien_RightIndex1
+    400058: Alien_RightIndex2
+    400060: Alien_RightIndex3
+    400062: Alien_RightIndex4
+    400064: Alien_RightLeg
+    400066: Alien_RightMiddle1
+    400068: Alien_RightMiddle2
+    400070: Alien_RightMiddle3
+    400072: Alien_RightMiddle4
+    400074: Alien_RightPinky1
+    400076: Alien_RightPinky2
+    400078: Alien_RightPinky3
+    400080: Alien_RightPinky4
+    400082: Alien_RightShoulder
+    400084: Alien_RightToeBase
+    400086: Alien_RightToeBaseEnd
+    400088: Alien_RightUpLeg
+    400090: Alien_Spine
+    400092: Alien_Spine1
+    400094: Alien_Spine2
+    400096: Alien_Tail
+    400098: Alien_Tail1
+    400100: Alien_Tail2
+    400102: Alien_Tail3
+    400104: Alien_Tail4
+    400106: Alien_Tail5
+    400108: Alien_TailEnd
+    400110: AlienBody
+    400112: //RootNode
+    4300000: AlienBody
+    7400000: Walk
+    7400002: Attack
+    9500000: //RootNode
+    13700000: AlienBody
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Alien_Hips
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg/Alien_LeftFoot
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg/Alien_LeftFoot/Alien_LeftToeBase
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg/Alien_LeftFoot/Alien_LeftToeBase/Alien_LeftToeBaseEnd
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg/Alien_RightFoot
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg/Alien_RightFoot/Alien_RightToeBase
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg/Alien_RightFoot/Alien_RightToeBase/Alien_RightToeBaseEnd
+        weight: 1
+      - path: Alien_Hips/Alien_Spine
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_Head
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_Head/Alien_HeadEnd
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1/Alien_LeftIndex2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1/Alien_LeftIndex2/Alien_LeftIndex3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1/Alien_LeftIndex2/Alien_LeftIndex3/Alien_LeftIndex4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1/Alien_LeftMiddle2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1/Alien_LeftMiddle2/Alien_LeftMiddle3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1/Alien_LeftMiddle2/Alien_LeftMiddle3/Alien_LeftMiddle4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1/Alien_LeftPinky2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1/Alien_LeftPinky2/Alien_LeftPinky3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1/Alien_LeftPinky2/Alien_LeftPinky3/Alien_LeftPinky4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1/Alien_RightIndex2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1/Alien_RightIndex2/Alien_RightIndex3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1/Alien_RightIndex2/Alien_RightIndex3/Alien_RightIndex4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1/Alien_RightMiddle2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1/Alien_RightMiddle2/Alien_RightMiddle3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1/Alien_RightMiddle2/Alien_RightMiddle3/Alien_RightMiddle4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1/Alien_RightPinky2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1/Alien_RightPinky2/Alien_RightPinky3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1/Alien_RightPinky2/Alien_RightPinky3/Alien_RightPinky4
+        weight: 1
+      - path: Alien_Hips/Alien_Tail
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3/Alien_Tail4
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3/Alien_Tail4/Alien_Tail5
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3/Alien_Tail4/Alien_Tail5/Alien_TailEnd
+        weight: 1
+      - path: AlienBody
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 25
+      lastFrame: 54
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Alien_Hips
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg/Alien_LeftFoot
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg/Alien_LeftFoot/Alien_LeftToeBase
+        weight: 1
+      - path: Alien_Hips/Alien_LeftUpLeg/Alien_LeftLeg/Alien_LeftFoot/Alien_LeftToeBase/Alien_LeftToeBaseEnd
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg/Alien_RightFoot
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg/Alien_RightFoot/Alien_RightToeBase
+        weight: 1
+      - path: Alien_Hips/Alien_RightUpLeg/Alien_RightLeg/Alien_RightFoot/Alien_RightToeBase/Alien_RightToeBaseEnd
+        weight: 1
+      - path: Alien_Hips/Alien_Spine
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_Head
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_Head/Alien_HeadEnd
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1/Alien_LeftIndex2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1/Alien_LeftIndex2/Alien_LeftIndex3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftIndex1/Alien_LeftIndex2/Alien_LeftIndex3/Alien_LeftIndex4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1/Alien_LeftMiddle2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1/Alien_LeftMiddle2/Alien_LeftMiddle3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftMiddle1/Alien_LeftMiddle2/Alien_LeftMiddle3/Alien_LeftMiddle4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1/Alien_LeftPinky2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1/Alien_LeftPinky2/Alien_LeftPinky3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_LeftShoulder/Alien_LeftArm/Alien_LeftForearm/Alien_LeftHand/Alien_LeftPinky1/Alien_LeftPinky2/Alien_LeftPinky3/Alien_LeftPinky4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1/Alien_RightIndex2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1/Alien_RightIndex2/Alien_RightIndex3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightIndex1/Alien_RightIndex2/Alien_RightIndex3/Alien_RightIndex4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1/Alien_RightMiddle2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1/Alien_RightMiddle2/Alien_RightMiddle3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightMiddle1/Alien_RightMiddle2/Alien_RightMiddle3/Alien_RightMiddle4
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1/Alien_RightPinky2
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1/Alien_RightPinky2/Alien_RightPinky3
+        weight: 1
+      - path: Alien_Hips/Alien_Spine/Alien_Spine1/Alien_Spine2/Alien_RightShoulder/Alien_RightArm/Alien_RightForearm/Alien_RightHand/Alien_RightPinky1/Alien_RightPinky2/Alien_RightPinky3/Alien_RightPinky4
+        weight: 1
+      - path: Alien_Hips/Alien_Tail
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3/Alien_Tail4
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3/Alien_Tail4/Alien_Tail5
+        weight: 1
+      - path: Alien_Hips/Alien_Tail/Alien_Tail1/Alien_Tail2/Alien_Tail3/Alien_Tail4/Alien_Tail5/Alien_TailEnd
+        weight: 1
+      - path: AlienBody
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
