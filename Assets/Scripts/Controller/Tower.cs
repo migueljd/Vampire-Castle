@@ -38,6 +38,7 @@ public class Tower : MonoBehaviour {
 	void Update () {
 		if (livingMinions.Count < maxMinionsFromTower && lastSpawnTime + spawnCooldown <= Time.time) {
 			SpawnMinion();
+			lastSpawnTime = Time.time;
 		}
 	}
 
