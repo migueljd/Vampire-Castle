@@ -1,65 +1,63 @@
 fileFormatVersion: 2
-guid: 27bd3383ed177dc40a0b006d6a9114d9
-timeCreated: 1444409561
+guid: b3aba1eae4da92448bdef822e514474b
+timeCreated: 1444409617
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Ghoul_low
-    100004: HeadBase
-    100006: Hips
-    100008: joint11
-    100010: joint12
-    100012: joint13
-    100014: joint13 1
-    100016: joint14
-    100018: joint14 1
-    100020: joint15
-    100022: joint15 1
-    100024: joint2
-    100026: joint2 1
-    100028: joint25
-    100030: joint3
-    100032: joint3 1
-    100034: joint4
-    100036: joint4 1
-    100038: LeftUpLeg
-    100040: Neck
-    100042: RightUpLeg
-    100044: Spine1
-    100046: Spine2
-    100048: Spine3
-    400000: //RootNode
-    400002: Ghoul_low
-    400004: HeadBase
-    400006: Hips
-    400008: joint11
-    400010: joint12
-    400012: joint13
-    400014: joint13 1
-    400016: joint14
-    400018: joint14 1
-    400020: joint15
-    400022: joint15 1
-    400024: joint2
-    400026: joint2 1
-    400028: joint25
-    400030: joint3
-    400032: joint3 1
-    400034: joint4
-    400036: joint4 1
-    400038: LeftUpLeg
-    400040: Neck
-    400042: RightUpLeg
-    400044: Spine1
-    400046: Spine2
-    400048: Spine3
-    4300000: Ghoul_low
+    100000: joint1
+    100002: joint10
+    100004: joint11
+    100006: joint12
+    100008: joint12 1
+    100010: joint13
+    100012: joint13 1
+    100014: joint14
+    100016: joint14 1
+    100018: joint19
+    100020: joint2
+    100022: joint2 1
+    100024: joint24
+    100026: joint3
+    100028: joint3 1
+    100030: joint4
+    100032: joint4 1
+    100034: joint5
+    100036: joint6
+    100038: joint7
+    100040: joint8
+    100042: joint9
+    100044: VampireHunter
+    100046: //RootNode
+    400000: joint1
+    400002: joint10
+    400004: joint11
+    400006: joint12
+    400008: joint12 1
+    400010: joint13
+    400012: joint13 1
+    400014: joint14
+    400016: joint14 1
+    400018: joint19
+    400020: joint2
+    400022: joint2 1
+    400024: joint24
+    400026: joint3
+    400028: joint3 1
+    400030: joint4
+    400032: joint4 1
+    400034: joint5
+    400036: joint6
+    400038: joint7
+    400040: joint8
+    400042: joint9
+    400044: VampireHunter
+    400046: //RootNode
+    4300000: VampireHunter
     7400000: Walk
     7400002: Attack
     9500000: //RootNode
-    13700000: Ghoul_low
+    13700000: VampireHunter
   materials:
     importMaterials: 0
     materialName: 0
@@ -84,14 +82,14 @@ ModelImporter:
       name: Walk
       takeName: Take 001
       firstFrame: 2
-      lastFrame: 32
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -106,53 +104,51 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: Ghoul_low
+      - path: joint5
         weight: 1
-      - path: Hips
+      - path: joint5/joint1
         weight: 1
-      - path: Hips/LeftUpLeg
+      - path: joint5/joint1/joint2
         weight: 1
-      - path: Hips/LeftUpLeg/joint2
+      - path: joint5/joint1/joint2/joint3
         weight: 1
-      - path: Hips/LeftUpLeg/joint2/joint3
+      - path: joint5/joint1/joint2/joint3/joint4
         weight: 1
-      - path: Hips/LeftUpLeg/joint2/joint3/joint4
+      - path: joint5/joint6
         weight: 1
-      - path: Hips/RightUpLeg
+      - path: joint5/joint6/joint7
         weight: 1
-      - path: Hips/RightUpLeg/joint2 1
+      - path: joint5/joint6/joint7/joint8
         weight: 1
-      - path: Hips/RightUpLeg/joint2 1/joint3 1
+      - path: joint5/joint6/joint7/joint8/joint9
         weight: 1
-      - path: Hips/RightUpLeg/joint2 1/joint3 1/joint4 1
+      - path: joint5/joint6/joint7/joint8/joint9/joint10
         weight: 1
-      - path: Hips/Spine1
+      - path: joint5/joint6/joint7/joint11
         weight: 1
-      - path: Hips/Spine1/Spine2
+      - path: joint5/joint6/joint7/joint11/joint12
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3
+      - path: joint5/joint6/joint7/joint11/joint12/joint13
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12
+      - path: joint5/joint6/joint7/joint11/joint12/joint13/joint14
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12/joint13
+      - path: joint5/joint6/joint7/joint19
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12/joint13/joint14
+      - path: joint5/joint6/joint7/joint19/joint12 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12/joint13/joint14/joint15
+      - path: joint5/joint6/joint7/joint19/joint12 1/joint13 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25
+      - path: joint5/joint6/joint7/joint19/joint12 1/joint13 1/joint14 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25/joint13 1
+      - path: joint5/joint24
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25/joint13 1/joint14 1
+      - path: joint5/joint24/joint2 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25/joint13 1/joint14 1/joint15 1
+      - path: joint5/joint24/joint2 1/joint3 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/Neck
+      - path: joint5/joint24/joint2 1/joint3 1/joint4 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/Neck/HeadBase
-        weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/Neck/HeadBase/joint11
+      - path: VampireHunter
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -160,7 +156,7 @@ ModelImporter:
       name: Attack
       takeName: Take 001
       firstFrame: 33
-      lastFrame: 51
+      lastFrame: 43
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -182,53 +178,51 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: Ghoul_low
+      - path: joint5
         weight: 1
-      - path: Hips
+      - path: joint5/joint1
         weight: 1
-      - path: Hips/LeftUpLeg
+      - path: joint5/joint1/joint2
         weight: 1
-      - path: Hips/LeftUpLeg/joint2
+      - path: joint5/joint1/joint2/joint3
         weight: 1
-      - path: Hips/LeftUpLeg/joint2/joint3
+      - path: joint5/joint1/joint2/joint3/joint4
         weight: 1
-      - path: Hips/LeftUpLeg/joint2/joint3/joint4
+      - path: joint5/joint6
         weight: 1
-      - path: Hips/RightUpLeg
+      - path: joint5/joint6/joint7
         weight: 1
-      - path: Hips/RightUpLeg/joint2 1
+      - path: joint5/joint6/joint7/joint8
         weight: 1
-      - path: Hips/RightUpLeg/joint2 1/joint3 1
+      - path: joint5/joint6/joint7/joint8/joint9
         weight: 1
-      - path: Hips/RightUpLeg/joint2 1/joint3 1/joint4 1
+      - path: joint5/joint6/joint7/joint8/joint9/joint10
         weight: 1
-      - path: Hips/Spine1
+      - path: joint5/joint6/joint7/joint11
         weight: 1
-      - path: Hips/Spine1/Spine2
+      - path: joint5/joint6/joint7/joint11/joint12
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3
+      - path: joint5/joint6/joint7/joint11/joint12/joint13
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12
+      - path: joint5/joint6/joint7/joint11/joint12/joint13/joint14
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12/joint13
+      - path: joint5/joint6/joint7/joint19
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12/joint13/joint14
+      - path: joint5/joint6/joint7/joint19/joint12 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint12/joint13/joint14/joint15
+      - path: joint5/joint6/joint7/joint19/joint12 1/joint13 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25
+      - path: joint5/joint6/joint7/joint19/joint12 1/joint13 1/joint14 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25/joint13 1
+      - path: joint5/joint24
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25/joint13 1/joint14 1
+      - path: joint5/joint24/joint2 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/joint25/joint13 1/joint14 1/joint15 1
+      - path: joint5/joint24/joint2 1/joint3 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/Neck
+      - path: joint5/joint24/joint2 1/joint3 1/joint4 1
         weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/Neck/HeadBase
-        weight: 1
-      - path: Hips/Spine1/Spine2/Spine3/Neck/HeadBase/joint11
+      - path: VampireHunter
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
