@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class BaseUnit : MonoBehaviour {
 	
 
-	private NavMeshAgent agent;
+	protected NavMeshAgent nvMsAgent;
 	private float nextAttackTime;
 
 	public bool enemy;
@@ -24,22 +24,40 @@ public class BaseUnit : MonoBehaviour {
 	[HideInInspector]
 	public List<BaseUnit> beingTargetedList;
 
+	[HideInInspector]
+	public List<BaseUnit> adversariesInRange;
+
+	[HideInInspector]
+	public bool inCombat = false;
+
+	protected FSMSystem FSM;
+
+	protected float distanceThreshold = .01f;
+
+
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+	//Unity methods
+	//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
 	// Use this for initialization
 	protected virtual void Start () {
-		agent = transform.GetComponent<NavMeshAgent> ();
+
+		nvMsAgent = transform.GetComponent<NavMeshAgent> ();
+
+
 		beingTargetedList = new List<BaseUnit> ();
+		adversariesInRange = new List<BaseUnit> ();
+
+		MakeFSM ();
+
 	}
 	
 	// Update is called once per frame
 	protected virtual void Update () {
-
-		if (target != null && nextAttackTime <= Time.time) {
-			nextAttackTime = Time.time + attackSpeed;
-			Attack ();
-
-		}
+		FSM.CurrentState.Reason (this.gameObject);
+		FSM.CurrentState.Act (this.gameObject);
 
 	}
 
@@ -52,108 +70,106 @@ public class BaseUnit : MonoBehaviour {
 	}
 
 
-	public void MoveTo(Vector3 position){
-		agent.SetDestination (position);
-		agent.Resume ();
-	}
-
-	protected virtual void OnTriggerEnter(Collider other){
-//		float dist = Vector3.Distance (this.transform.position, other.transform.position);
-//		Collider thisCol = this.GetComponent<Collider> ();
-//		Debug.Log ("Dist: " + dist);
-//		if(thisCol is SphereCollider) Debug.Log ("Radius: " + ((SphereCollider) thisCol).radius);
-//		if (target == null && 
-//		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
-//		    ) {
-		BaseUnit unit = other.transform.parent != null? other.transform.parent.GetComponent<BaseUnit> () : other.GetComponent<BaseUnit>();
-		if (target == null) {
-			if (other.transform.parent == null)
-				return;
-			
-			if (this.enemy) {
-				if (unit != null && unit.enemy != this.enemy && (unit.target == null || unit.target == this || unit.name == "Dracula")) {
-					EnterCombat (unit);
-				}
-			} else if (unit != null && unit.enemy != this.enemy) {
-				EnterCombat (unit);
-			}
-		} 
-		else if (!this.enemy && target.gameObject != other.gameObject && unit != null && target.beingTargetedList.Count > 1 && unit.beingTargetedList.Count == 0) {
-			EnterCombat(unit);
-		}
-		else if (this.enemy && target.target != this) {
-			target = null;
-			agent.Resume();
-		}
-	}
-
 	protected virtual void OnTriggerStay(Collider other){
-//		float dist = Vector3.Distance (this.transform.position, other.transform.position);
-//		Collider thisCol = this.GetComponent<Collider> ();
-//		Debug.Log ("Dist: " + dist);
-//		if(thisCol is SphereCollider) Debug.Log ("Radius: " + ((SphereCollider) thisCol).radius);
-//		if (target == null && 
-//		    ((thisCol is BoxCollider && dist <= this.GetComponent<Collider>().bounds.size.x/2) || (thisCol is SphereCollider && dist <= ((SphereCollider) thisCol).radius))
-//		    ) {
-		BaseUnit unit = other.transform.parent != null? other.transform.parent.GetComponent<BaseUnit> () : other.GetComponent<BaseUnit>();
-		if (target == null) {
-			if (other.transform.parent == null)
-				return;
-
-			if (this.enemy) {
-				if (unit != null && unit.enemy != this.enemy && (unit.target == null || unit.target == this || unit.name == "Dracula")) {
-					EnterCombat (unit);
-				}
-			} else if (unit != null && unit.enemy != this.enemy) {
-				EnterCombat (unit);
+		if (other.transform.parent != null) {
+			BaseUnit unit = other.transform.parent.GetComponent<BaseUnit> ();
+			
+			if (unit != null && unit.enemy != this.enemy && !unit.inCombat) {
+				adversariesInRange.Add (unit);
 			}
-		} else if (!this.enemy && target.gameObject != other.gameObject && unit != null && target.beingTargetedList.Count > 1 && unit.beingTargetedList.Count == 0) {
-			EnterCombat (unit);
-		} else if (this.enemy && target.target != this) {
-			target = null;
-			agent.Resume();
 		}
 	}
 
-
-	private void EnterCombat(BaseUnit unit){
-		Debug.Log ("Combat started");
-		if(this.enemy)
-			agent.Stop ();
-
-		List<BaseUnit> list;
-		if (target != null) {
-			list = target.beingTargetedList;
-//			lock(list){
-				list.Remove(this);
-//			}
+	protected virtual void OnTriggerExit(Collider other){
+		if (other.transform.parent != null) {
+			BaseUnit unit = other.transform.parent.GetComponent<BaseUnit> ();
+			
+			if (unit != null && unit.enemy != this.enemy) {
+				adversariesInRange.Remove(unit);
+			}
 		}
+	}
 
-		target = unit;
-
-
-		list = unit.beingTargetedList;
-
-//		lock(list){
-			list.Add(this);
-//		}
+	//--------------------------------------------------------------------------------------------------------------------------------------------
 
 
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+	//FSM Related methods
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+
+	public void SetTransition(Transition t){
+
+		FSM.PerformTransition (t);
 
 	}
 
-	private void Attack(){
-		if (target.TakeDamage (this.Damage)) {
-			target = null;
+	protected virtual void MakeFSM (){
+		FSM = new FSMSystem ();
+	}
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+	//NavMeshAgent Related methods
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+	/// <summary>
+	/// Moves to position.
+	/// </summary>
+	/// <param name="position">Position.</param>
+	public void MoveTo(Vector3 position){
+		nvMsAgent.SetDestination (position);
+		nvMsAgent.Resume ();
+	}
+
+	/// <summary>
+	/// Stops the unit's NavMeshAgent movement.
+	/// </summary>
+	public void Stop(){
+		nvMsAgent.Stop ();
+	}
+
+	//TODO change this to abstract, as well as change the class to abstract
+	/// <summary>
+	/// Every unit should implement this method which would direct the unit to it's destination
+	/// </summary>
+	public virtual void MoveToDestination(){}
+
+	/// <summary>
+	/// Checks if the unit has reached it's destination.
+	/// </summary>
+	/// <returns><c>true</c>, if reached was destinationed, <c>false</c> otherwise.</returns>
+	public virtual bool DestinationReached(){
+		if (nvMsAgent.destination != Vector3.zero && Vector3.Distance (nvMsAgent.destination, this.transform.position) <= distanceThreshold) {
+			nvMsAgent.SetDestination(this.transform.position);
+			return true;
+		}
+		return false;
+	}
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// This basically just makes the unit deal damage to another unit if it has a target
+	/// </summary>
+	public void Attack(){
+		if (target != null && target.TakeDamage (this.Damage)) {
+			this.Target(null);
 		}
 
 	}
 
+
+	/// <summary>
+	/// Takes the damage. The unit should take damage and inform to the caller if it died or not.
+	/// Also if this is the Dracula, we should update the UI element that displays his HP
+	/// </summary>
+	/// <returns><c>true</c>, if damage was taken, <c>false</c> otherwise.</returns>
+	/// <param name="damage">Damage.</param>
 	public bool TakeDamage(int damage){
 
 		Debug.Log ("Unit " + this.name + " took " + damage + " damage");
 		Health -= damage;
-//		Debug.Log (string.Format ("Unit {0} remaining health is {1}", this.name, this.Health));
 
 		if (this.name == "Dracula")
 			GameController.UpdateDraculaHealthText ();
@@ -162,16 +178,50 @@ public class BaseUnit : MonoBehaviour {
 			return true;
 		return false;
 	}
+	
+	/// <summary>
+	/// Target the specified newTarget. Changes the target to the new target, remove this from the beingTargetedList from the old target, 
+		/// add this to the beingTargetedList from the @newTarget
+	/// </summary>
+	/// <param name="newTarget">New target.</param>
+	public void Target(BaseUnit newTarget){
 
+		if (target != null)
+			target.beingTargetedList.Remove (this);
+
+		target = newTarget;
+		if (target != null) {
+			target.beingTargetedList.Add (this);
+			inCombat = true;
+		} else {
+			inCombat = false;
+		}
+
+	}
+
+	/// <summary>
+	/// Notify this unit that a given adversary has died
+	/// </summary>
+	/// <param name="unit">Unit.</param>
+	public void AdversaryDied(BaseUnit unit){
+		if (unit == target)
+			Target (null);
+	
+	}
+
+	/// <summary>
+	/// This should ALWAYS be called when a unit is about to die
+	/// </summary>
 	protected virtual void BeforeDestroy(){
-		if (this is BaseAI) {
-			WaveSpawner.enemySpawned--;
-			GameController.GiveBlood ();
-		} else if (this.name == "Dracula")
-			GameController.draculaAlive = false;
-		else if(this is BaseUnit && !this is TowerUnit){
-			unitRoom.RemoveUnit(this);
-			markup.available = true;
+
+		this.Target (null);
+
+		if(beingTargetedList.Count > 0){
+			foreach(BaseUnit unit in beingTargetedList){
+				unit.AdversaryDied(this);
+
+			}
 		}
 	}
+	
 }

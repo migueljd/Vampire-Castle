@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
 	[Header("Spawnning")]
 	public float chanceForBigGuySpawn;
 
-	public WaveSpawner waveSpawner;
+	public List<WaveSpawner> waveSpawners;
 	public static bool draculaAlive = true;
 
 	public int maxDraculaBlood = 60;
@@ -60,8 +60,6 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		Debug.Log(~(1<< LayerMask.NameToLayer("Controller")));
-//		Debug.Log (~(1 <<LayerMask.NameToLayer ("Default")));
 		draculaHealthText.text = "Blood: " + dracula.Health; 
 
 		toSpawn = ((GameObject) Resources.Load ("Prefabs/Ally")).GetComponent<BaseUnit>();
@@ -82,43 +80,6 @@ public class GameController : MonoBehaviour {
 		RCooldownText.text = "R Cooldown: " + (lastRTime + RCooldown - Time.time < 0 ? 0 : lastRTime + RCooldown - Time.time).ToString("0.00");
 		TCooldownText.text = "T Cooldown: " + (lastTTime + TCooldown - Time.time < 0 ? 0 : lastTTime + RCooldown - Time.time).ToString("0.00");
 
-
-
-//		if (Input.GetMouseButtonDown (0)) {
-//			RaycastHit hit;
-//			
-//			Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
-//			
-//			Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 10);
-//			if(Physics.Raycast(ray,  out hit, 20, ~ (1 << LayerMask.NameToLayer("Default")))){
-//
-//				BaseUnit unit = hit.collider.transform.GetComponent<BaseUnit>();
-//				if(unit != null){
-//					if(unit.enemy)
-//						selectedEnemy = unit;
-//					else
-//						selectedUnit = unit;
-//				}
-//					
-//			}
-//		} 
-//		else if (Input.GetMouseButtonDown (1)) {
-//
-//			if(selectedUnit != null){
-//				RaycastHit hit;
-//
-//				Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
-//
-//
-//				if(Physics.Raycast(ray,  out hit, 20, (1<< LayerMask.NameToLayer("Controller")))){
-//					if(selectedUnit != null){
-//
-//						Vector3 destination = GetCorrectedDepthPoint(hit);
-//						selectedUnit.MoveTo(destination);
-//					}
-//				}
-//			}
-//		}
 
 		//Spawn melee unit
 		if (Input.GetKeyDown (KeyCode.E) && lastETime + ECooldown <= Time.time) {
@@ -208,8 +169,15 @@ public class GameController : MonoBehaviour {
 	}
 
 	private void CheckEndGame(){
-//		Debug.Log (string.Format("There are {0} spawned and {1} to be spawned", WaveSpawner.enemySpawned, waveSpawner.GetEnemyToSpawn()));
-		if (WaveSpawner.enemySpawned == 0 && waveSpawner.GetEnemyToSpawn () == 0) {
+
+		bool thereAreEnemiesToSpawn = false;
+
+		foreach (WaveSpawner ws in waveSpawners) {
+			if(ws.GetEnemyToSpawn() != 0)
+				thereAreEnemiesToSpawn = true;
+		}
+
+		if (WaveSpawner.enemySpawned == 0 && !thereAreEnemiesToSpawn) {
 			endGameText.text = "Dracula is the ultimate overlord!";
 			endGameText.enabled = true;
 		} else if (!draculaAlive) {

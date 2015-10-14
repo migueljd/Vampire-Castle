@@ -7,13 +7,9 @@ public class WaveSpawner : MonoBehaviour {
 	private Wave mainWave;
 	private List<Wave> waveList;
 
-	public int numberOfWaves;
-	public int enemiesInWave;
 	public float timeAtBegin;
-	public float timeBetweenUnitSpawn;
 	public float timeBetweenWaves;
-
-
+	
 	public Waypoint firstWaypoint;
 
 	public string XmlFileName;
@@ -33,24 +29,11 @@ public class WaveSpawner : MonoBehaviour {
 		}
 
 		if (waveList != null && waveList.Count > 0) {
-//			GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
-//			GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
-//			List<GameObject> enemies = new List<GameObject> ();
-//
-//			for (int a = 0; a < enemiesInWave; a++) { 
-//				float random = Random.Range(0.0f, 1.0f);
-//				if(random >= 1 - GameController.chanceForBigGuySpawn_)
-//					enemies.Add(bigEnemy);
-//				else
-//					enemies.Add (enemyPrefab);
-//			}
-
 
 			mainWave = waveList[0];
 			waveList.RemoveAt(0);
 			firstSpawn = Time.time + timeAtBegin;
 
-			numberOfWaves--;
 		}
 
 	}
@@ -68,23 +51,9 @@ public class WaveSpawner : MonoBehaviour {
 			}
 			else if(waveList != null && waveList.Count > 0){
 
-//				List<GameObject> enemies = new List<GameObject> ();
-//				GameObject enemyPrefab = (GameObject)Resources.Load ("Prefabs/Enemy");
-//				GameObject bigEnemy = (GameObject)Resources.Load ("Prefabs/SlowEnemy");
-//
-//				
-//				for (int a = 0; a < enemiesInWave; a++) { 
-//					float random = Random.Range(0.0f, 1.0f);
-//					if(random >= 1 - GameController.chanceForBigGuySpawn_)
-//						enemies.Add(bigEnemy);
-//					else
-//						enemies.Add (enemyPrefab);
-//				}
 
 				mainWave = waveList[0];
 				waveList.RemoveAt(0);
-
-				numberOfWaves--;
 
 				firstSpawn = Time.time + timeBetweenWaves;
 			}
@@ -95,6 +64,7 @@ public class WaveSpawner : MonoBehaviour {
 	public void SpawnEnemy(GameObject enemy){
 		GameObject spawnedEnemy = (GameObject) Instantiate (enemy, this.transform.position, Quaternion.identity);
 		spawnedEnemy.GetComponent<BaseAI> ().nextWaypoint = firstWaypoint;
+		spawnedEnemy.name += enemySpawned;
 		enemySpawned++;
 
 	}
